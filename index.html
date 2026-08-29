@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti, mi amor ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="bienvenida" class="bienvenida">
+    <div class="bienvenida-contenido">
+      <span class="bienvenida-corazon">💕</span>
+      <h2>Un regalo solo para ti</h2>
+      <p>Toca aquí para abrir tu sorpresa</p>
+      <button id="btnEntrar">Entrar con amor</button>
+    </div>
+  </div>
+
+  <canvas id="stars"></canvas>
+  <div id="petalos"></div>
+  <div class="textura"></div>
+
+  <nav class="nav-flotante">
+    <a href="#inicio">Inicio</a>
+    <a href="#carta">Carta</a>
+    <a href="#tiempo">Tiempo</a>
+    <a href="#interactivo">Para ti</a>
+    <a href="#recuerdos">Recuerdos</a>
+    <a href="#final">Final</a>
+  </nav>
+
+  <button id="musicaBtn" class="musica-btn" title="Música">🎵</button>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-contenido reveal">
+      <p class="hero-etiqueta">Hecho con todo mi amor</p>
+      <h1>Para ti, mi vida <span class="corazon-pulso">❤️</span></h1>
+      <p class="hero-texto">
+        Desde que llegaste a mi vida, todo se siente más bonito.
+        Los días simples se volvieron recuerdos que quiero guardar para siempre.
+      </p>
+      <div class="hero-scroll">
+        <span>Desliza</span>
+        <div class="scroll-linea"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section id="carta" class="carta-section">
+    <div class="seccion-titulo reveal">
+      <span class="titulo-decor">✦</span>
+      <h2>Una carta para ti</h2>
+      <span class="titulo-decor">✦</span>
+    </div>
+    <div class="envelope reveal" id="sobre">
+      <div class="sobre-cuerpo">
+        <div class="flap"></div>
+        <div class="carta-interior">
+          <div class="carta-papel">
+            <p class="carta-saludo">Mi amor,</p>
+            <p>Tu sonrisa tiene algo especial. Es esa pequeña magia que logra iluminar cualquier día, incluso los más grises.</p>
+            <p>Contigo descubrí que la felicidad no está en los grandes momentos, sino en los más simples: una mirada, un abrazo, una risa tuya.</p>
+            <p class="carta-firma">Con todo mi amor,<br><em>Felipe</em></p>
+          </div>
+        </div>
+      </div>
+      <p class="sobre-hint">Toca el sobre para abrirlo</p>
+    </div>
+  </section>
+
+  <!-- CONTADOR -->
+  <section id="tiempo" class="contador-section">
+    <div class="seccion-titulo reveal">
+      <span class="titulo-decor">♡</span>
+      <h2>Tiempo juntos</h2>
+      <span class="titulo-decor">♡</span>
+    </div>
+    <p class="contador-sub reveal">Cada segundo a tu lado es un regalo</p>
+    <div class="contador-wrapper reveal">
+      <div class="contador-card">
+        <div class="contador-num" id="dias">0</div>
+        <div class="contador-label">Días</div>
+      </div>
+      <div class="contador-sep">:</div>
+      <div class="contador-card">
+        <div class="contador-num" id="horas">0</div>
+        <div class="contador-label">Horas</div>
+      </div>
+      <div class="contador-sep">:</div>
+      <div class="contador-card">
+        <div class="contador-num" id="minutos">0</div>
+        <div class="contador-label">Minutos</div>
+      </div>
+      <div class="contador-sep">:</div>
+      <div class="contador-card">
+        <div class="contador-num" id="segundos">0</div>
+        <div class="contador-label">Segundos</div>
+      </div>
+    </div>
+    <p class="contador-fecha reveal">Desde el 28 de noviembre de 2025</p>
+  </section>
+
+  <!-- INTERACTIVO -->
+  <section id="interactivo" class="interactivo-section">
+    <div class="seccion-titulo reveal">
+      <span class="titulo-decor">💌</span>
+      <h2>Mensajes para ti</h2>
+      <span class="titulo-decor">💌</span>
+    </div>
+    <p class="interactivo-sub reveal">Toca cada corazón cuando lo necesites</p>
+    <div class="interactivo-grid reveal">
+      <button class="interactivo-btn" data-msg="Estoy aquí siempre para escucharte, abrazarte y recordarte lo increíble que eres. No estás sola, mi amor. 💕">
+        <span class="btn-emoji">🌧️</span>
+        <span class="btn-texto">¿Estás triste?<br><small>Toca aquí</small></span>
+      </button>
+      <button class="interactivo-btn" data-msg="Te extraño muchísimo. Cada momento sin ti me hace valorar aún más cuando estamos juntos. Pronto estaré contigo. 🤗">
+        <span class="btn-emoji">🥺</span>
+        <span class="btn-texto">¿Me extrañas?<br><small>Toca aquí</small></span>
+      </button>
+      <button class="interactivo-btn" data-msg="Eres la persona más hermosa que he conocido, por dentro y por fuera. Tu belleza ilumina mi mundo entero. ✨">
+        <span class="btn-emoji">🌸</span>
+        <span class="btn-texto">¿Te sientes fea?<br><small>Toca aquí</small></span>
+      </button>
+      <button class="interactivo-btn" data-msg="Te amo más de lo que las palabras pueden decir. Eres mi todo, mi hogar, mi paz y mi aventura. Te amo infinito. ❤️">
+        <span class="btn-emoji">💝</span>
+        <span class="btn-texto">¿Quieres saber cuánto te amo?<br><small>Toca aquí</small></span>
+      </button>
+      <button class="interactivo-btn" data-msg="Eres increíble, valiente y capaz de todo. Creo en ti más de lo que imaginas. Estoy orgulloso de ti siempre. 🌟">
+        <span class="btn-emoji">💪</span>
+        <span class="btn-texto">¿Necesitas ánimo?<br><small>Toca aquí</small></span>
+      </button>
+      <button class="interactivo-btn" data-msg="Quiero besarte, abrazarte y no soltarte nunca. Eres mi persona favorita en todo el universo. 💋">
+        <span class="btn-emoji">😘</span>
+        <span class="btn-texto">¿Quieres un beso?<br><small>Toca aquí</small></span>
+      </button>
+    </div>
+    <div id="mensajeModal" class="mensaje-modal">
+      <div class="mensaje-contenido">
+        <button class="mensaje-cerrar">&times;</button>
+        <div class="mensaje-corazon">💕</div>
+        <p id="mensajeTexto"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECUERDOS -->
+  <section id="recuerdos" class="recuerdos-section">
+    <div class="seccion-titulo reveal">
+      <span class="titulo-decor">📸</span>
+      <h2>Nuestros recuerdos</h2>
+      <span class="titulo-decor">📸</span>
+    </div>
+    <p class="recuerdos-sub reveal">Cada foto guarda un pedacito de nuestro amor</p>
+
+    <div class="filtros reveal">
+      <button class="filtro-btn activo" data-cat="todos">Todos</button>
+      <button class="filtro-btn" data-cat="alegres">😊 Alegres</button>
+      <button class="filtro-btn" data-cat="tiernos">🥰 Tiernos</button>
+      <button class="filtro-btn" data-cat="romanticos">💕 Románticos</button>
+      <button class="filtro-btn" data-cat="besos">💋 Besos</button>
+    </div>
+
+    <div class="galeria-masonry reveal" id="galeria"></div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-cerrar">&times;</button>
+    <button class="lightbox-prev">&#10094;</button>
+    <img id="lightboxImg" src="" alt="Nuestro recuerdo">
+    <button class="lightbox-next">&#10095;</button>
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <!-- FINAL -->
+  <section id="final" class="final-section">
+    <div class="final-contenido reveal">
+      <div class="final-corazones">💕 💖 💕</div>
+      <h2>Te elegiría una y mil veces más</h2>
+      <p>Gracias por cada risa, cada abrazo, cada beso y cada momento compartido.</p>
+      <p class="final-firma">Para siempre tuyo,<br><span>Felipe</span></p>
+      <div class="final-decoracion">
+        <span>♡</span><span>♡</span><span>♡</span>
+      </div>
+    </div>
+  </section>
+
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
