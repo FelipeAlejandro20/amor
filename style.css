@@ -315,60 +315,119 @@ section {
 }
 
 .envelope {
-  perspective: 1000px;
   margin: 2rem auto;
-  max-width: 380px;
+  max-width: 420px;
+}
+
+.sobre-stage {
+  position: relative;
+  min-height: 200px;
+  perspective: 900px;
 }
 
 .sobre-cuerpo {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 200px;
   cursor: pointer;
+  z-index: 2;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(135deg, var(--rosa), var(--rosa-oscuro));
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: top center;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 3;
-  border-radius: 4px 4px 0 0;
-}
-
-.sobre-cuerpo::before {
-  content: '';
+.sobre-base {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 160px;
   background: linear-gradient(160deg, #c2185b, #880e4f);
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   z-index: 1;
+}
+
+.sobre-base::before,
+.sobre-base::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(160deg, #d81b60, #9c134f);
+}
+
+.sobre-base::before {
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.sobre-base::after {
+  right: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.flap {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  background: linear-gradient(135deg, var(--rosa), var(--rosa-oscuro));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 0.3s, visibility 0.4s ease 0.3s;
+  z-index: 3;
+  border-radius: 4px 4px 0 0;
 }
 
 .carta-interior {
   position: absolute;
-  bottom: 10px;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(0);
-  width: 90%;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-  z-index: 2;
+  transform: translateX(-50%) translateY(130px);
+  width: 88%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 0;
+  transition:
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+    opacity 0.5s ease 0.35s,
+    visibility 0.5s ease 0.35s;
 }
 
 .envelope.abierto .flap {
-  transform: rotateX(180deg);
+  transform: rotateX(160deg);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.envelope.abierto .sobre-cuerpo {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92);
+  pointer-events: none;
 }
 
 .envelope.abierto .carta-interior {
-  transform: translateX(-50%) translateY(-100px);
+  position: relative;
+  left: auto;
+  transform: none;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 5;
+  margin-top: 0;
+}
+
+.envelope.abierto .sobre-stage {
+  min-height: auto;
+}
+
+.envelope.abierto .sobre-hint {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .carta-papel {
@@ -406,6 +465,7 @@ section {
   font-size: 0.85rem;
   color: rgba(255, 240, 245, 0.5);
   animation: pulsoSuave 2s ease-in-out infinite;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 /* CONTADOR */
