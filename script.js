@@ -1,5 +1,6 @@
 // ─── CONFIGURACIÓN ───
 const INICIO_RELACION = new Date("2025-11-28T00:00:00");
+const FIN_RELACION = new Date("2026-09-02T00:00:00");
 
 const FOTOS = [
   { src: "imagenes/foto1.jpg", cat: "romanticos", cap: "Nuestro comienzo" },
@@ -52,24 +53,31 @@ const FOTOS = [
 ];
 
 // ─── MÚSICA ───
-const musica = document.getElementById("musica");
+const musicaDueles = document.getElementById("musicaDueles");
 const btnMusica = document.getElementById("musicaBtn");
-musica.volume = 0.5;
 
-function iniciarMusica() {
-  musica.play().then(() => {
+musicaDueles.volume = 0.5;
+
+function actualizarBtnMusica(reproduciendo) {
+  if (reproduciendo) {
     btnMusica.classList.add("reproduciendo");
     btnMusica.textContent = "⏸";
-  }).catch(() => {});
+  } else {
+    btnMusica.classList.remove("reproduciendo");
+    btnMusica.textContent = "🎵";
+  }
+}
+
+function iniciarMusica() {
+  musicaDueles.play().then(() => actualizarBtnMusica(true)).catch(() => {});
 }
 
 btnMusica.addEventListener("click", () => {
-  if (musica.paused) {
-    iniciarMusica();
+  if (musicaDueles.paused) {
+    musicaDueles.play().then(() => actualizarBtnMusica(true)).catch(() => {});
   } else {
-    musica.pause();
-    btnMusica.classList.remove("reproduciendo");
-    btnMusica.textContent = "🎵";
+    musicaDueles.pause();
+    actualizarBtnMusica(false);
   }
 });
 
@@ -90,32 +98,20 @@ const els = {
   segundos: document.getElementById("segundos"),
 };
 
-let prevVals = { dias: -1, horas: -1, minutos: -1, segundos: -1 };
-
 function actualizarContador() {
-  const ahora = new Date();
-  const diff = ahora - INICIO_RELACION;
+  const diff = FIN_RELACION - INICIO_RELACION;
 
   const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
   const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const minutos = Math.floor((diff / (1000 * 60)) % 60);
   const segundos = Math.floor((diff / 1000) % 60);
 
-  const vals = { dias, horas, minutos, segundos };
-
-  for (const key of Object.keys(vals)) {
-    if (vals[key] !== prevVals[key]) {
-      const el = els[key];
-      el.textContent = String(vals[key]).padStart(2, "0");
-      el.classList.remove("cambio");
-      void el.offsetWidth;
-      el.classList.add("cambio");
-      prevVals[key] = vals[key];
-    }
-  }
+  els.dias.textContent = String(dias).padStart(2, "0");
+  els.horas.textContent = String(horas).padStart(2, "0");
+  els.minutos.textContent = String(minutos).padStart(2, "0");
+  els.segundos.textContent = String(segundos).padStart(2, "0");
 }
 
-setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // ─── SOBRE ───
