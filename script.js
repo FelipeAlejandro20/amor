@@ -88,6 +88,7 @@ const btnEntrar = document.getElementById("btnEntrar");
 btnEntrar.addEventListener("click", () => {
   bienvenida.classList.add("oculta");
   iniciarMusica();
+  if (typeof window.registrarVisita === "function") window.registrarVisita();
 });
 
 // ─── CONTADOR ───
