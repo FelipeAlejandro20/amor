@@ -53,10 +53,10 @@ const FOTOS = [
 ];
 
 // ─── MÚSICA ───
-const musicaDueles = document.getElementById("musicaDueles");
+const musica = document.getElementById("musica");
 const btnMusica = document.getElementById("musicaBtn");
 
-musicaDueles.volume = 0.5;
+musica.volume = 0.5;
 
 function actualizarBtnMusica(reproduciendo) {
   if (reproduciendo) {
@@ -69,14 +69,14 @@ function actualizarBtnMusica(reproduciendo) {
 }
 
 function iniciarMusica() {
-  musicaDueles.play().then(() => actualizarBtnMusica(true)).catch(() => {});
+  musica.play().then(() => actualizarBtnMusica(true)).catch(() => {});
 }
 
 btnMusica.addEventListener("click", () => {
-  if (musicaDueles.paused) {
-    musicaDueles.play().then(() => actualizarBtnMusica(true)).catch(() => {});
+  if (musica.paused) {
+    musica.play().then(() => actualizarBtnMusica(true)).catch(() => {});
   } else {
-    musicaDueles.pause();
+    musica.pause();
     actualizarBtnMusica(false);
   }
 });
