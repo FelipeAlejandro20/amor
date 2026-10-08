@@ -132,6 +132,106 @@ sobre.addEventListener("click", () => {
 });
 
 // ─── INTERACTIVO ───
+const MENSAJES = {
+  triste: `Si estás leyendo esto en uno de esos días en los que sientes que todo pesa un poquito más, quiero que recuerdes que no tienes que poder con todo tú sola.
+
+Respira, tómate tu tiempo y recuerda que eres muchísimo más fuerte de lo que a veces crees, eres increíble mi amor, no dejes de brillar nunca.💖✨
+
+Ojalá pudiera estar ahí para abrazarte fuerte, acariciarte con un beso y decirte que todo va a estar bien.🫂❤️
+
+Y aunque ahora no pueda hacerlo, quiero que estas palabras te recuerden que hay alguien que te ama muchísimo y que siempre desea verte tranquila y feliz.🤗💖
+
+No olvides nunca cuánto vales, mi Janecita. ❤️`,
+
+  extranias: `Yo también te extraño mucho mi amor.🥹
+
+Más de lo que probablemente te digo.🥹
+
+Extraño nuestras conversaciones, nuestras risas, tus mensajes, escuchar cómo estuvo tu día y hasta esas pequeñas cosas que quizá parecen insignificantes, pero que cuando no estás hacen falta.😓🫂
+
+A veces no necesito que pase nada extraordinario para extrañarte.💖
+
+Simplemente apareces en mi pensamiento.🤗
+
+Y entonces sonrío porque recuerdo que tengo una historia contigo que quiero seguir escribiendo.🥹🫂`,
+
+  fea: `Ven mami.
+
+Quiero recordarte algo que quizá tú misma olvidas algunas veces:
+
+no necesitas verte perfecta para ser hermosa.🥹
+
+Me encanta tu sonrisa, tu mirada, tu forma de ser, tus gestos, tus ocurrencias y todas esas pequeñas cosas que te hacen ser tú.🫂
+
+Pero hay algo que quiero que recuerdes todavía más:
+
+tu valor no depende de cómo te veas frente a un espejo.💖😓
+
+Eres hermosa por la persona que eres, por tu corazón, por la manera en que quieres y por todo lo que llevas dentro.🤗💖
+
+Así que si algún día dudas de ti, recuerda que yo veo en ti muchísimo más de lo que tú alcanzas a ver algunas veces.🫂
+
+Eres tan hermosa mi amor, tienes una sonrisa tan linda y una figura tan ufff, queee sexi.🤗😚👄`,
+
+  amo: `No sé si exista una manera exacta de medir cuánto puede querer una persona a otra.
+
+Pero sé que te amo en los días fáciles y también en los difíciles.🥹
+
+Te amo cuando estamos riendo por cualquier tontería y cuando simplemente necesitamos estar en silencio.🥹
+
+Te amo en los mensajes de buenos días, en los “buenas noches”, en nuestras conversaciones, en nuestras oraciones y en todos esos momentos que solamente nosotros entendemos.🫂
+
+Te amo por quien eres y por todo lo que hemos construido juntos.🤗🙏
+
+Y si tuviera que elegir una sola palabra para explicar lo que siento por ti, probablemente ninguna sería suficiente.
+
+Así que simplemente te lo digo como sé:
+
+Te amo, mi Janecita. Muchísimo. ❤️`,
+
+  animo: `Si estás leyendo esto porque hoy no te sientes capaz, quiero que hagas una pausa y recuerdes todo lo que ya has superado.🥹
+
+No tienes que resolver toda tu vida en un solo día.🥹
+
+Puedes avanzar poquito a poquito mi corazón.🤗
+
+Puedes descansar.
+
+Puedes equivocarte.
+
+Puedes volver a intentarlo.
+
+Y puedes tener mucho miedo.🫂
+
+Yo creo en ti, mi amor.🫂❤️
+
+Creo en tus sueños, en tus capacidades y en la persona que eres.💖🤗
+
+Así que no te rindas solamente porque hoy sea difícil.
+
+Mañana puede sentirse diferente.
+
+Y mientras tanto, recuerda que hay alguien aquí que está orgulloso de ti y que quiere verte graduada y cumpliendo todo aquello que sueñas.❤️`,
+
+  beso: `Entonces cierra los ojos un momentito.🥹
+
+Imagínate que estoy frente a ti, acercándome despacito, sonriendo porque sé perfectamente lo que estás esperando.
+
+Primero un beso en la frente, luego uno en tus cachetitos todos rojos y lindos.😚❤️
+
+Después un abrazo pero bien grandote mi amor, como siempre nos decimos.🥹🫂
+
+Y finalmente...
+
+un besote para mi Janecita. 😘❤️
+
+Ahora sí puedes abrir los ojos, mi corazón bello.
+
+Pero una cosa más:
+
+ese beso quedó pendiente para la próxima vez que nos veamos.🥹🤗😚`,
+};
+
 const modal = document.getElementById("mensajeModal");
 const mensajeTexto = document.getElementById("mensajeTexto");
 
@@ -143,7 +243,8 @@ document.querySelectorAll(".interactivo-btn").forEach(btn => {
   });
 
   btn.addEventListener("click", () => {
-    mensajeTexto.textContent = btn.dataset.msg;
+    const key = btn.dataset.msgKey;
+    mensajeTexto.textContent = MENSAJES[key] || "";
     modal.classList.add("activo");
     crearConfeti(btn);
   });
@@ -289,6 +390,7 @@ window.addEventListener("scroll", () => {
 
 // ─── PÉTALOS ───
 const petalosEmojis = ["🌸", "🌺", "💮", "🩷", "✿"];
+const corazonFotos = ["foto 1.jpg", "foto 4.jpg"];
 
 function crearPetalo() {
   const p = document.createElement("div");
@@ -301,7 +403,24 @@ function crearPetalo() {
   setTimeout(() => p.remove(), 12000);
 }
 
+function crearCorazonFoto() {
+  const lado = Math.random() < 0.5 ? "izq" : "der";
+  const c = document.createElement("div");
+  c.classList.add("corazon-foto");
+  c.style.backgroundImage = `url("${corazonFotos[lado === "izq" ? 0 : 1]}")`;
+  c.style.left = lado === "izq"
+    ? (Math.random() * 12 + 2) + "vw"
+    : (Math.random() * 12 + 86) + "vw";
+  const size = Math.random() * 18 + 40;
+  c.style.width = size + "px";
+  c.style.height = size + "px";
+  c.style.animationDuration = (Math.random() * 5 + 7) + "s";
+  document.getElementById("petalos").appendChild(c);
+  setTimeout(() => c.remove(), 13000);
+}
+
 setInterval(crearPetalo, 600);
+setInterval(crearCorazonFoto, 1800);
 
 // ─── ESTRELLAS ───
 const canvas = document.getElementById("stars");
