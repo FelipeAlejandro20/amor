@@ -654,6 +654,10 @@ section {
   opacity: 0.7;
 }
 
+.envelope-pausa {
+  margin-top: 2.5rem;
+}
+
 /* INTERACTIVO */
 .interactivo-section {
   padding: 100px 20px;
