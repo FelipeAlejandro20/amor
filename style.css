@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -19,6 +20,14 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+button,
+a {
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
 }
 
 body {
@@ -68,6 +77,18 @@ body {
   height: 48px;
   background-size: cover;
   background-position: center;
+  -webkit-clip-path: polygon(
+    50% 92%,
+    8% 55%,
+    0% 30%,
+    8% 10%,
+    28% 0%,
+    50% 18%,
+    72% 0%,
+    92% 10%,
+    100% 30%,
+    92% 55%
+  );
   clip-path: polygon(
     50% 92%,
     8% 55%,
@@ -80,10 +101,14 @@ body {
     100% 30%,
     92% 55%
   );
+  -webkit-animation: caerCorazon linear forwards;
   animation: caerCorazon linear forwards;
   opacity: 0.9;
   z-index: 1;
   pointer-events: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
 @keyframes caer {
@@ -208,6 +233,7 @@ body {
   border-radius: 50%;
   border: 2px solid rgba(244, 143, 177, 0.5);
   background: rgba(45, 10, 30, 0.8);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   font-size: 1.4rem;
   cursor: pointer;
@@ -512,6 +538,18 @@ section {
   height: 100%;
   object-fit: cover;
   display: block;
+  -webkit-clip-path: polygon(
+    50% 92%,
+    8% 55%,
+    0% 30%,
+    8% 10%,
+    28% 0%,
+    50% 18%,
+    72% 0%,
+    92% 10%,
+    100% 30%,
+    92% 55%
+  );
   clip-path: polygon(
     50% 92%,
     8% 55%,
@@ -524,6 +562,7 @@ section {
     100% 30%,
     92% 55%
   );
+  -webkit-filter: drop-shadow(0 8px 16px rgba(173, 20, 87, 0.3));
   filter: drop-shadow(0 8px 16px rgba(173, 20, 87, 0.3));
 }
 
@@ -559,6 +598,7 @@ section {
   border: 1px solid rgba(244, 143, 177, 0.3);
   border-radius: 16px;
   padding: clamp(16px, 3vw, 28px) clamp(20px, 4vw, 36px);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow:
     0 8px 32px rgba(233, 30, 99, 0.15),
@@ -685,6 +725,7 @@ section {
   color: var(--texto);
   font-family: 'Nunito', sans-serif;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   position: relative;
   overflow: hidden;
@@ -733,6 +774,7 @@ section {
   inset: 0;
   z-index: 5000;
   background: rgba(13, 5, 16, 0.85);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;

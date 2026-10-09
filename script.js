@@ -1,5 +1,5 @@
 // ─── CONFIGURACIÓN ───
-const INICIO_RELACION = new Date("2025-11-28T00:00:00");
+const INICIO_RELACION = new Date(2025, 10, 28, 0, 0, 0);
 
 const FOTOS = [
   { src: "imagenes/foto1.jpg", cat: "romanticos", cap: "Nuestro comienzo" },
@@ -418,13 +418,11 @@ function crearPetalo() {
 }
 
 function crearCorazonFoto() {
-  const lado = Math.random() < 0.5 ? "izq" : "der";
   const c = document.createElement("div");
   c.classList.add("corazon-foto");
-  c.style.backgroundImage = `url("${corazonFotos[lado === "izq" ? 0 : 1]}")`;
-  c.style.left = lado === "izq"
-    ? (Math.random() * 12 + 2) + "vw"
-    : (Math.random() * 12 + 86) + "vw";
+  c.style.backgroundImage = `url("${corazonFotos[Math.floor(Math.random() * corazonFotos.length)]}")`;
+  // Caen en orillas y también en el centro (toda la página)
+  c.style.left = (Math.random() * 92 + 2) + "vw";
   const size = Math.random() * 18 + 40;
   c.style.width = size + "px";
   c.style.height = size + "px";
