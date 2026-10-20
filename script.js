@@ -90,10 +90,7 @@ btnEntrar.addEventListener("click", () => {
   if (typeof window.registrarVisita === "function") window.registrarVisita();
 });
 
-// ─── CONTADOR (pausado en 313 días) ───
-const CONTADOR_PAUSADO = true;
-const DIAS_PAUSA = 313;
-
+// ─── CONTADOR ───
 const els = {
   dias: document.getElementById("dias"),
   horas: document.getElementById("horas"),
@@ -104,20 +101,12 @@ const els = {
 let prevVals = { dias: -1, horas: -1, minutos: -1, segundos: -1 };
 
 function actualizarContador() {
-  let dias, horas, minutos, segundos;
+  const diff = new Date() - INICIO_RELACION;
 
-  if (CONTADOR_PAUSADO) {
-    dias = DIAS_PAUSA;
-    horas = 0;
-    minutos = 0;
-    segundos = 0;
-  } else {
-    const diff = new Date() - INICIO_RELACION;
-    dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    minutos = Math.floor((diff / (1000 * 60)) % 60);
-    segundos = Math.floor((diff / 1000) % 60);
-  }
+  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diff / (1000 * 60)) % 60);
+  const segundos = Math.floor((diff / 1000) % 60);
 
   const vals = { dias, horas, minutos, segundos };
 
@@ -133,10 +122,8 @@ function actualizarContador() {
   }
 }
 
+setInterval(actualizarContador, 1000);
 actualizarContador();
-if (!CONTADOR_PAUSADO) {
-  setInterval(actualizarContador, 1000);
-}
 
 // ─── SOBRES ───
 document.querySelectorAll(".envelope").forEach((sobre) => {
